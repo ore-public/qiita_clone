@@ -38,3 +38,15 @@ gem 'spring',        group: :development
 # Use debugger
 # gem 'debugger', group: [:development, :test]
 
+gem 'bootstrap-sass', '~> 3.2.0'
+gem 'omniauth'
+gem 'omniauth-twitter'
+gem 'omniauth-github'
+gem 'dotenv-rails'
+gem 'haml-rails'
+gem 'devise'
+
+group :production do
+  gem 'rails_12factor'
+end
+
