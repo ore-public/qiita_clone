@@ -45,6 +45,7 @@ gem 'omniauth-github'
 gem 'dotenv-rails'
 gem 'haml-rails'
 gem 'devise'
+gem 'erb2haml'
 
 group :production do
   gem 'rails_12factor'
