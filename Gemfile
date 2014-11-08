@@ -47,6 +47,7 @@ gem 'haml-rails'
 gem 'devise'
 gem 'erb2haml'
 gem 'friendly_id'
+gem 'simple_form'
 
 group :production do
   gem 'rails_12factor'
