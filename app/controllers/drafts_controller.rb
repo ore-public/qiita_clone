@@ -1,5 +1,5 @@
 class DraftsController < ApplicationController
-  before_action :set_draft, only: [:show, :edit]
+  before_action :set_draft, only: [:show, :edit, :update]
   respond_to :html
 
   def new
@@ -16,6 +16,11 @@ class DraftsController < ApplicationController
   end
 
   def edit
+  end
+
+  def update
+    @draft.update(draft_params)
+    respond_with(@draft)
   end
 
   private
