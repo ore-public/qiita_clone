@@ -49,7 +49,12 @@ gem 'erb2haml'
 gem 'friendly_id'
 gem 'simple_form'
 
+group :development do
+  gem 'hirb'
+  gem 'hirb-unicode'
+  gem 'pry-rails'
+end
+
 group :production do
   gem 'rails_12factor'
 end
-
