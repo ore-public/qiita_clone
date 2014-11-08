@@ -6,6 +6,8 @@ class Draft < ActiveRecord::Base
   validates :title, presence: true
   validates :item_token, presence: true, uniqueness: true
 
+  belongs_to :user
+  
   private
   def set_item_token
     self.item_token ||= SecureRandom.hex(10)
