@@ -7,7 +7,7 @@ class Draft < ActiveRecord::Base
   validates :item_token, presence: true, uniqueness: true
 
   belongs_to :user
-  
+
   private
   def set_item_token
     self.item_token ||= SecureRandom.hex(10)

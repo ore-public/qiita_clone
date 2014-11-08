@@ -1,13 +1,14 @@
 class DraftsController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_draft, only: [:show, :edit, :update]
   respond_to :html
 
   def new
-    @draft = Draft.new
+    @draft = current_user.drafts.build
   end
 
   def create
-    @draft = Draft.new(draft_params)
+    @draft = current_user.drafts.build(draft_params)
     @draft.save
     respond_with(@draft)
   end
@@ -25,7 +26,7 @@ class DraftsController < ApplicationController
 
   private
   def set_draft
-    @draft = Draft.find(params[:id])
+    @draft = current_user.drafts.find(params[:id])
   end
 
   def draft_params
