@@ -46,6 +46,7 @@ gem 'dotenv-rails'
 gem 'haml-rails'
 gem 'devise'
 gem 'erb2haml'
+gem 'friendly_id'
 
 group :production do
   gem 'rails_12factor'
