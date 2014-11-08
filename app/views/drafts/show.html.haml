@@ -1,0 +1,11 @@
+%p#notice= notice
+
+= link_to 'Edit', edit_draft_path(@draft)
+
+%p
+  %b Title:
+  = @draft.title
+%p
+  %b Body:
+  = @draft.raw_body
+

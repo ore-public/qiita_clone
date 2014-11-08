@@ -1,0 +1,9 @@
+= simple_form_for(@draft) do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.input :title
+    = f.input :raw_body
+
+  .form-actions
+    = f.button :submit

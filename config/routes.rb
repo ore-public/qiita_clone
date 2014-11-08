@@ -1,6 +1,4 @@
 Rails.application.routes.draw do
-  get 'drafts/new'
-
   root 'home#index'
 
   get 'home/index'
@@ -9,4 +7,5 @@ Rails.application.routes.draw do
       omniauth_callbacks: "users/omniauth_callbacks"
   }
 
+  resources :drafts
 end
