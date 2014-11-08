@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'drafts/new'
+
   root 'home#index'
 
   get 'home/index'
