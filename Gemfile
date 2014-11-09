@@ -48,6 +48,7 @@ gem 'devise'
 gem 'erb2haml'
 gem 'friendly_id'
 gem 'simple_form'
+gem 'default_value_for'
 
 group :development do
   gem 'hirb'

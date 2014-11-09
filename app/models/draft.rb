@@ -1,5 +1,5 @@
 class Draft < ActiveRecord::Base
-  before_validation :set_item_token
+  default_value_for :item_token, SecureRandom.hex(10)
   extend FriendlyId
   friendly_id :item_token, use: [:slugged, :finders]
 
@@ -8,8 +8,4 @@ class Draft < ActiveRecord::Base
 
   belongs_to :user
 
-  private
-  def set_item_token
-    self.item_token ||= SecureRandom.hex(10)
-  end
 end
