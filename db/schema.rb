@@ -11,12 +11,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141108151330) do
+ActiveRecord::Schema.define(version: 20141120151122) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "drafts", force: true do |t|
+  create_table "articles", force: true do |t|
     t.string   "title"
     t.text     "raw_body"
     t.datetime "created_at"
@@ -24,11 +24,13 @@ ActiveRecord::Schema.define(version: 20141108151330) do
     t.string   "slug"
     t.string   "item_token"
     t.integer  "user_id"
+    t.string   "type"
   end
 
-  add_index "drafts", ["slug"], name: "index_drafts_on_slug", unique: true, using: :btree
-  add_index "drafts", ["title"], name: "index_drafts_on_title", using: :btree
-  add_index "drafts", ["user_id"], name: "index_drafts_on_user_id", using: :btree
+  add_index "articles", ["slug", "type"], name: "index_articles_on_slug_and_type", unique: true, using: :btree
+  add_index "articles", ["slug"], name: "index_articles_on_slug", using: :btree
+  add_index "articles", ["title"], name: "index_articles_on_title", using: :btree
+  add_index "articles", ["user_id"], name: "index_articles_on_user_id", using: :btree
 
   create_table "users", force: true do |t|
     t.string   "email",                  default: "", null: false

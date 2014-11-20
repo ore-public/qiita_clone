@@ -2,6 +2,7 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :trackable, :omniauthable, :omniauth_providers => [:github]
 
   has_many :drafts
+  has_many :items
 
   def self.find_for_oauth(auth)
     u = User.where(:provider => auth["provider"], :uid => auth.uid)
