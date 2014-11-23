@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
-  root 'home#index'
 
   get 'home/index'
+  get 'home/auth'
 
   devise_for :users, controllers: {
       omniauth_callbacks: "users/omniauth_callbacks"
@@ -9,5 +9,11 @@ Rails.application.routes.draw do
 
   resources :drafts
   resources :items, only: [:show]
+
+  authenticated :user do
+    root :to => "home#index", as: 'user_authenticated_root'
+  end
+
+  root 'home#auth'
 
 end
