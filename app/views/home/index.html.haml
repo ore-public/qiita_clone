@@ -1,7 +1,6 @@
 %h1 Home#index
 
 %table
-- @items.each do |item|
-  %tr
-    %td= item.title
-    
+  - @items.each do |item|
+    %tr
+      %td= item.title
