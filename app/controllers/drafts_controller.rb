@@ -10,7 +10,14 @@ class DraftsController < ApplicationController
   def create
     @draft = current_user.drafts.build(draft_params)
     @draft.save
-    respond_with(@draft)
+
+    if params[:public_create]
+      @item = current_user.items.build(@draft.get_contents)
+      @item.save
+      redirect_to @item
+    else
+      respond_with(@draft)
+    end
   end
 
   def show
@@ -26,7 +33,7 @@ class DraftsController < ApplicationController
 
   private
   def set_draft
-    @draft = current_user.drafts.find(params[:id])
+    @draft = current_user.drafts.friendly.find(params[:id])
   end
 
   def draft_params

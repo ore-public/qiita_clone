@@ -8,4 +8,6 @@ Rails.application.routes.draw do
   }
 
   resources :drafts
+  resources :items, only: [:show]
+
 end

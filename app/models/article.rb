@@ -3,7 +3,7 @@ class Article < ActiveRecord::Base
 
   extend FriendlyId
   friendly_id :item_token,
-              use: [:slugged, :finders, :scoped],
+              use: [:slugged, :scoped],
               scope: :type
 
   validates :title, presence: true
