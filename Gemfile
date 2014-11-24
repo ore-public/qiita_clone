@@ -54,6 +54,7 @@ group :development do
   gem 'hirb'
   gem 'hirb-unicode'
   gem 'pry-rails'
+  gem 'quiet_assets'
 end
 
 group :production do
