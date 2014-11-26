@@ -9,15 +9,21 @@ class DraftsController < ApplicationController
 
   def create
     @draft = current_user.drafts.build(draft_params)
-    @draft.save
-
-    if params[:public_create]
-      @item = current_user.items.build(@draft.get_contents)
-      @item.save
-      redirect_to @item
+    if @draft.save
+      if params[:public_create]
+        @item = current_user.items.build(@draft.get_contents)
+        if @item.save
+          redirect_to @item
+        else
+          render 'new'
+        end
+      else
+        redirect_to @draft
+      end
     else
-      respond_with(@draft)
+      render 'new'
     end
+
   end
 
   def show
