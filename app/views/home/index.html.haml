@@ -5,3 +5,5 @@
     = item.user.name
     = time_ago_in_words(item.updated_at)
     = link_to item.title, item
+
+= paginate @items

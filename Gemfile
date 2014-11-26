@@ -49,6 +49,7 @@ gem 'erb2haml'
 gem 'friendly_id'
 gem 'simple_form'
 gem 'default_value_for'
+gem 'kaminari'
 
 group :development do
   gem 'hirb'

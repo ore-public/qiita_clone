@@ -1,6 +1,6 @@
 class HomeController < ApplicationController
   def index
-    @items = Item.all
+    @items = Item.page(params[:page])
   end
 
   def auth
