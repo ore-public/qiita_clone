@@ -9,21 +9,7 @@ class DraftsController < ApplicationController
 
   def create
     @draft = current_user.drafts.build(draft_params)
-    if @draft.save
-      if params[:public_create]
-        @item = current_user.items.build(@draft.get_contents)
-        if @item.save
-          redirect_to @item
-        else
-          render 'new'
-        end
-      else
-        redirect_to @draft
-      end
-    else
-      render 'new'
-    end
-
+    save_draft_and_item('new')
   end
 
   def show
@@ -34,7 +20,7 @@ class DraftsController < ApplicationController
 
   def update
     @draft.update(draft_params)
-    respond_with(@draft)
+    save_draft_and_item('edit')
   end
 
   private
@@ -46,4 +32,28 @@ class DraftsController < ApplicationController
     params.require(:draft).permit(:title, :raw_body)
   end
 
+  def save_draft_and_item(action)
+    if @draft.save
+      if params[:public_create]
+        @item = current_user.items.build(@draft.get_contents)
+        save_item(action)
+      elsif params[:public_update]
+        @item = @draft.item
+        @item.update_attributes(@draft.get_contents)
+        save_item(action)
+      else
+        redirect_to @draft
+      end
+    else
+      render action
+    end
+  end
+
+  def save_item(action)
+    if @item.save
+      redirect_to @item
+    else
+      render action
+    end
+  end
 end

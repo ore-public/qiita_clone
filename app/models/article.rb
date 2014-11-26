@@ -12,6 +12,6 @@ class Article < ActiveRecord::Base
 
   private
   def set_item_token
-    self.item_token = SecureRandom.hex(10)
+    self.item_token ||= SecureRandom.hex(10)
   end
 end
