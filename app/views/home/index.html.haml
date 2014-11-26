@@ -1,6 +1,7 @@
 %h1 Home#index
 
-%table
-  - @items.each do |item|
-    %tr
-      %td= item.title
+%ul
+  = content_tag_for(:li, @items) do |item|
+    = item.user.name
+    = time_ago_in_words(item.updated_at)
+    = link_to item.title, item
