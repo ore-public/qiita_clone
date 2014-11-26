@@ -7,8 +7,6 @@ class Article < ActiveRecord::Base
               scope: :type
 
   validates :title, presence: true
-  validates :item_token, presence: true,
-            uniqueness: {scope: [:type]}
 
   belongs_to :user
 
