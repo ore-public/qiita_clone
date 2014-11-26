@@ -1,5 +1,5 @@
 class Article < ActiveRecord::Base
-  default_value_for :item_token, SecureRandom.hex(10)
+  before_validation :set_item_token
 
   extend FriendlyId
   friendly_id :item_token,
@@ -10,4 +10,8 @@ class Article < ActiveRecord::Base
 
   belongs_to :user
 
+  private
+  def set_item_token
+    self.item_token = SecureRandom.hex(10)
+  end
 end
