@@ -1,0 +1,6 @@
+%h1 Draft Index
+
+%ul
+  = content_tag_for(:li, @drafts) do |draft|
+    = link_to draft.title, draft
+    = draft.updated_at

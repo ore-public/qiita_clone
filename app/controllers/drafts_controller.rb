@@ -3,6 +3,10 @@ class DraftsController < ApplicationController
   before_action :set_draft, only: [:show, :edit, :update]
   respond_to :html
 
+  def index
+    @drafts = current_user.drafts
+  end
+
   def new
     @draft = current_user.drafts.build
   end
