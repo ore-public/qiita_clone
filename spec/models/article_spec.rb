@@ -14,10 +14,30 @@ describe Article, type: :model do
     expect(draft1.slug).not_to eq(draft2.slug)
   end
 
-  it "下書きと公開記事、item_tokenが同じなら、slugも同じになること" do
-    draft = Draft.create!(title: '下書き')
-    item = Item.create!(draft.get_contents)
-    expect(item.slug).to eq(draft.slug)
+  context '下書きから公開記事を作る（記事が未公開の場合)' do
+    it '下書きから公開記事作成。下書きの内容と同じであること' do
+      draft = Draft.create!(title: '下書き', raw_body: '# タイトル')
+      item = draft.new_public_item
+      expect(item).to be_persisted
+      expect(item.title).to eq(draft.title)
+      expect(item.raw_body).to eq(draft.raw_body)
+      expect(item.item_token).to eq(draft.item_token)
+      expect(item.slug).to eq(draft.slug)
+    end
+
+    it 'item_tokenが重複した下書きがある場合、公開記事のslugが下書きと同期とれていること' do
+      draft = Draft.create!(title: '下書き', item_token: 'hoge')
+      item = draft.new_public_item
+      draft2 = Draft.create!(title: '下書き2', item_token: 'hoge')
+      item2 = draft2.new_public_item
+      expect(item.slug).to eq(draft.slug)
+      expect(item2.slug).to eq(draft2.slug)
+    end
+
+    it 'すでに公開済みの下書きで、公開メソッドを呼ぶとエラーになること' do
+      draft = Draft.create!(title: '下書き', raw_body: '# タイトル')
+      draft.new_public_item
+      expect(draft.new_public_item).to raise_error
+    end
   end
-  
 end
