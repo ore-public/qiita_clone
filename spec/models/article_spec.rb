@@ -12,7 +12,7 @@ describe Article, type: :model do
     draft1 = Draft.create!(title: '下書き1', item_token: 'hoge')
     draft2 = Draft.create!(title: '下書き2', item_token: 'hoge')
     expect(draft1.slug).not_to eq(draft2.slug) 
-o end
+  end
 
   context '下書きから公開記事を作る（記事が未公開の場合)' do
     it '下書きから公開記事作成。下書きの内容と同じであること' do
@@ -49,10 +49,11 @@ o end
       draft.title = 'タイトル upd'
       draft.raw_body = '本文 upd'
       draft.save!
-      draft.item.update_public_item
+      draft.update_public_item
 
       item = draft.item
       expect(item.title).to eq('タイトル upd')
       expect(item.raw_body).to eq('本文 upd')
+    end
   end
 end
