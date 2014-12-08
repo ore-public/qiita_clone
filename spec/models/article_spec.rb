@@ -55,5 +55,10 @@ describe Article, type: :model do
       expect(item.title).to eq('タイトル upd')
       expect(item.raw_body).to eq('本文 upd')
     end
+
+    it '記事未公開で下書きの更新メソッド呼ぶとエラーになること' do
+      draft = Draft.create!(title: 'タイトル')
+      expect{draft.update_public_item}.to raise_error
+    end
   end
 end
