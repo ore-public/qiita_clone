@@ -8,7 +8,7 @@ RSpec.describe DraftsController, :type => :controller do
     end
     
     it '下書きとの作成' do
-
+      sign_in @user1
     end
   end
 end
