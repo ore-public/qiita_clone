@@ -18,7 +18,7 @@ RSpec.describe DraftsController, :type => :controller do
       @user2 = User.create!(email: 'user2@mail.com')
     end
     
-    it '下書きとの作成' do
+    it '下書きの作成' do
       sign_in @user1
 
       expect {
