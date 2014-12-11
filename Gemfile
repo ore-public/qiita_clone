@@ -51,7 +51,7 @@ gem 'simple_form'
 gem 'default_value_for'
 gem 'kaminari'
 
-group :development do
+group :development, :test do
   gem 'hirb'
   gem 'hirb-unicode'
   gem 'pry-rails'
