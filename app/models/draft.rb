@@ -3,19 +3,9 @@ class Draft < Article
           :foreign_key => :slug,
           :primary_key => :slug
 
-  def get_contents
-    {
-      title: self.title,
-      raw_body: self.raw_body,
-      item_token: self.item_token,
-      slug: self.slug,
-      user: self.user
-    }
-  end
-
   def new_public_item
     unless self.item
-      self.create_item!(self.get_contents)
+      self.create_item!(get_contents)
     else
       raise 'Already created public item.'
     end
@@ -23,9 +13,22 @@ class Draft < Article
 
   def update_public_item
     if self.item
-      self.item.update_attributes(self.get_contents)
+      self.item.update_attributes(get_contents)
+      self.item
     else
       raise 'Public item not created.'
     end
   end
+
+  private
+  def get_contents
+    {
+        title: self.title,
+        raw_body: self.raw_body,
+        item_token: self.item_token,
+        slug: self.slug,
+        user: self.user
+    }
+  end
+
 end

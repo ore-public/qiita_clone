@@ -49,9 +49,8 @@ describe Article, type: :model do
       draft.title = 'タイトル upd'
       draft.raw_body = '本文 upd'
       draft.save!
-      draft.update_public_item
+      item = draft.update_public_item
 
-      item = draft.item
       expect(item.title).to eq('タイトル upd')
       expect(item.raw_body).to eq('本文 upd')
     end

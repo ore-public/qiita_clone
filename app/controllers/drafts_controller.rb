@@ -39,11 +39,10 @@ class DraftsController < ApplicationController
   def save_draft_and_item(action)
     if @draft.save
       if params[:public_create]
-        @item = current_user.items.build(@draft.get_contents)
+        @item = @draft.new_public_item
         save_item(action)
       elsif params[:public_update]
-        @item = @draft.item
-        @item.update_attributes(@draft.get_contents)
+        @item = @draft.update_public_item
         save_item(action)
       else
         redirect_to @draft

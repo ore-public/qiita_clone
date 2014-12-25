@@ -38,8 +38,48 @@ RSpec.describe DraftsController, :type => :controller do
       draft.save!
 
       expect {
-        post :update, {id: draft.id, draft: {title: '編集して公開'}, public_create: '投稿'}
+        put :update, {id: draft.id, draft: {title: '編集して公開'}, public_create: '投稿'}
       }.to change(Item, :count).by(1)
+    end
+
+    context '公開記事を編集して下書きのみ保存した場合' do
+      before do
+        sign_in @user1
+
+        draft = @user1.drafts.build(drafts_attributes)
+        draft.save!
+        item = draft.new_public_item
+        @slug = item.slug
+
+        put :update, {id: draft.id, draft: {title: '公開記事を下書き保存'}}
+      end
+
+      it '下書きのみ更新されていること' do
+        item = Item.find_by!(slug: @slug)
+        draft = Draft.find_by!(slug: @slug)
+
+        expect(item.title).not_to eq(draft.title)
+      end
+    end
+
+    context '公開記事の編集から公開記事を保存した場合' do
+      before do
+        sign_in @user1
+
+        draft = @user1.drafts.build(drafts_attributes)
+        draft.save!
+        item = draft.new_public_item
+        @slug = item.slug
+
+        put :update, {id: draft.id, draft: {title: '公開記事を下書き保存'}, public_update: '更新'}
+      end
+
+      it '下書きと公開記事が更新されていること' do
+        item = Item.find_by!(slug: @slug)
+        draft = Draft.find_by!(slug: @slug)
+
+        expect(item.title).to eq(draft.title)
+      end
     end
   end
 end
