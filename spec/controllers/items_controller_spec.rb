@@ -15,16 +15,12 @@ RSpec.describe ItemsController, :type => :controller do
       @item2 = draft2.new_public_item
     end
 
-    it '自分の記事にアクセスした場合' do
+    it 'get show' do
       sign_in @user1
 
       get :show, {id: @item1.to_param}
-      expect(response).to render_template(:show)
+      expect(assigns(:item)).to eq(@item1)
     end
 
-    it '他人の記事にアクセスした場合' do
-      sign_in @user1
-
-    end
   end
 end
