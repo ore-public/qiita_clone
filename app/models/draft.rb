@@ -8,7 +8,8 @@ class Draft < Article
       title: self.title,
       raw_body: self.raw_body,
       item_token: self.item_token,
-      slug: self.slug
+      slug: self.slug,
+      user: self.user
     }
   end
 
