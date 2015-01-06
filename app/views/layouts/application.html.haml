@@ -2,10 +2,45 @@
 %html
 %head
   %title QiitaClone
-  = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
-  = javascript_include_tag 'application', 'data-turbolinks-track' => true
+  = stylesheet_link_tag    'application', media: 'all'
+  = javascript_include_tag 'application'
   = csrf_meta_tags
 
 %body
+  %nav.navbar.navbar-inverse
+    .container
+      .navbar-header
+        %button.navbar-toggle.collapsed{type: 'button', 'data-toggle': 'collapse', 'data-target': '.bs-navbar-collapse'}
+          %span.sr-only
+            Toggle navigation
+          %span.icon-bar
+          %span.icon-bar
+          %span.icon-bar
+        = link_to 'QiitaClone', root_path, class: 'navbar-brand'
+      .collapse.navbar-collapse.bs-navbar-collapse
+        %ul.nav.navbar-nav
+        %form.navbar-form.navbar-left{role: "search"}
+          .form-group
+            %input.form-control{type: "text", placeholder: "キーワードを入力"}
+          %button.btn.btn-default{type: "submit"}
+            検索
+        %ul.nav.navbar-nav.navbar-right
+          %li
+            = link_to '新規作成', new_draft_path
+          %li
+            = link_to 'ストック一覧'
+          - if user_signed_in?
+            %li.dropdown
+              %a.dropdown-toggle{href: "#", 'data-toggle': "dropdown", role: "button", 'aria-expanded': "false"}
+                = current_user.name
+                %span.caret
+              %ul.dropdown-menu{role: 'menu'}
+                %li.divider
+                %li
+                  = link_to "Sign out", destroy_user_session_path, :method => :delete
+          - else
+            %li
+              = link_to 'Sign in', root_path
 
-= yield
+  .container
+    = yield
