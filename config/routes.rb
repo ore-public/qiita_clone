@@ -8,7 +8,9 @@ Rails.application.routes.draw do
   }
 
   resources :drafts
-  resources :items, only: %i(show)
+  resources :items, only: %i(show) do
+    resource :stock, only: %i(create destroy)
+  end
   resources :users, only: %i(show) do
     resources :stocks, only: %i(index)
   end

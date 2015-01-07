@@ -35,7 +35,7 @@ module QiitaClone
         routing_specs: false,
         controller_specs: true,
         request_specs: false
-      g.fixture_replacement :factory_gir, dir: 'spec/factories'
+      g.fixture_replacement :factory_girl, dir: 'spec/factories'
     end
   end
 end

@@ -3,6 +3,15 @@ class User < ActiveRecord::Base
 
   has_many :drafts
   has_many :items
+  has_many :stocks
+  has_many :stock_items, through: :stocks, class_name: 'Item'
+
+  extend FriendlyId
+  friendly_id :nickname, use: :slugged
+
+  validates :email, uniqueness: true, presence: true
+  validates :nickname, presence: true
+  validates :slug, uniqueness: true, presence: true
 
   def self.find_for_oauth(auth)
     u = User.where(:provider => auth["provider"], :uid => auth.uid)

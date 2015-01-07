@@ -3,3 +3,8 @@
 
 - if user_signed_in? && @item.user == current_user
   = link_to '編集', edit_draft_path(@item.draft)
+- elsif user_signed_in? && @item.user != current_user
+  - if @item.stocked?(current_user)
+    = link_to 'ストックを解除', item_stock_path(@item), method: :delete, remote: true
+  - else
+    = link_to 'ストックする', item_stock_path(@item), method: :post, remote: true
