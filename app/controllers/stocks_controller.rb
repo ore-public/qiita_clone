@@ -12,6 +12,6 @@ class StocksController < ApplicationController
   end
 
   def index
-    @stocks = User.friendly.find(params[:user_id]).stock_items
+    @stocks = User.friendly.find(params[:user_id]).stock_items.page(params[:page])
   end
 end

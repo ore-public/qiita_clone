@@ -1,9 +1,3 @@
 %h1 すべての投稿
 
-%ul
-  = content_tag_for(:li, @items) do |item|
-    = item.user.name
-    = time_ago_in_words(item.updated_at)
-    = link_to item.title, item
-
-= paginate @items
+= render 'share/itemlist', items: @items
