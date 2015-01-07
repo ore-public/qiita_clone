@@ -7,6 +7,7 @@ class Article < ActiveRecord::Base
               scope: :type
 
   validates :title, presence: true
+  validates :user, presence: true
 
   belongs_to :user
 
