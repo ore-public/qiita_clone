@@ -8,7 +8,10 @@ Rails.application.routes.draw do
   }
 
   resources :drafts
-  resources :items, only: [:show]
+  resources :items, only: %i(show)
+  resources :users, only: %i(show) do
+    resources :stocks, only: %i(index)
+  end
 
   authenticated :user do
     root :to => "home#index", as: 'user_authenticated_root'
