@@ -25,11 +25,11 @@
           %button.btn.btn-default{type: "submit"}
             検索
         %ul.nav.navbar-nav.navbar-right
-          %li
-            = link_to '新規作成', new_draft_path
-          %li
-            = link_to 'ストック一覧'
           - if user_signed_in?
+            %li
+              = link_to '新規作成', new_draft_path
+            %li
+              = link_to 'ストック一覧', user_stocks_path(current_user)
             %li.dropdown
               %a.dropdown-toggle{href: "#", 'data-toggle': "dropdown", role: "button", 'aria-expanded': "false"}
                 = current_user.nickname

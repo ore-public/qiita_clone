@@ -1,0 +1,6 @@
+
+%ul
+  = content_tag_for(:li, @stocks) do |stock|
+    = stock.user.name
+    = time_ago_in_words(stock.updated_at)
+    = link_to stock.title, stock
