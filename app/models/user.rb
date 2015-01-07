@@ -17,7 +17,7 @@ class User < ActiveRecord::Base
     u = User.where(:provider => auth["provider"], :uid => auth.uid)
     case auth["provider"].to_sym
       when :github
-        u.first_or_create(:name => auth.extra.raw_info.name, :email => auth.info.email)
+        u.first_or_create(name: auth.extra.raw_info.name, email: auth.info.email, nickname: auth.info.nickname)
     end
   end
 end
