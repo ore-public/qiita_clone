@@ -6,6 +6,8 @@ class User < ActiveRecord::Base
   has_many :stocks
   has_many :stock_items, through: :stocks, class_name: 'Item'
 
+  acts_as_tagger
+
   extend FriendlyId
   friendly_id :nickname, use: :slugged
 

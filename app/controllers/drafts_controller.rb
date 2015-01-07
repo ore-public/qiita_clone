@@ -33,7 +33,7 @@ class DraftsController < ApplicationController
   end
 
   def draft_params
-    params.require(:draft).permit(:title, :raw_body)
+    params.require(:draft).permit(:title, :raw_body, :tag_list)
   end
 
   def save_draft_and_item(action)

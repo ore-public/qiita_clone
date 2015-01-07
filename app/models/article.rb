@@ -1,6 +1,8 @@
 class Article < ActiveRecord::Base
   before_validation :set_item_token
 
+  acts_as_taggable
+
   extend FriendlyId
   friendly_id :item_token,
               use: [:slugged, :scoped],
