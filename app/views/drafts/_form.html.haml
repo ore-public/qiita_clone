@@ -2,9 +2,12 @@
   = f.error_notification
 
   .form-inputs
-    = f.input :tag_list
-    = f.input :title
-    = f.input :raw_body
+    .form-group
+      = f.input :tag_list
+    .form-group
+      = f.input :title
+    .form-group
+      = f.input :raw_body
 
   .form-actions
     = f.button :submit, '下書き保存'
