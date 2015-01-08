@@ -3,7 +3,7 @@
     = item.user.name
     = time_ago_in_words(item.updated_at)
     = link_to item.title, item
-    - item.tags.each do |tag|
+    - item.draft.tags.each do |tag|
       = tag.name
 
 = paginate items
