@@ -3,11 +3,11 @@
 
   .form-inputs
     .form-group
-      = f.input :tag_list
+      = f.input :title, label: 'タイトル', input_html: {class: 'input-lg'}
     .form-group
-      = f.input :title
+      = f.input :tag_list, label: 'タグ', input_html: {placeholder: 'タグ1, タグ2'}
     .form-group
-      = f.input :raw_body
+      = f.input :raw_body, label: '本文', input_html: {rows: 10}
 
   .form-actions
     = f.button :submit, '下書き保存'
