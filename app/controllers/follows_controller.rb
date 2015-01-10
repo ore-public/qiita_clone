@@ -5,13 +5,11 @@ class FollowsController < ApplicationController
   def create
     follow = @user.follows.build(follower_id: current_user.id)
     follow.save!
-    render js: 'location.reload();'
   end
 
   def destroy
     follow = @user.follows.find_by(follower_id: current_user.id)
     follow.destroy
-    render js: 'location.reload();'
   end
 
   private
