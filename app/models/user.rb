@@ -5,7 +5,9 @@ class User < ActiveRecord::Base
   has_many :items
   has_many :stocks
   has_many :stock_items, through: :stocks, class_name: 'Item'
-
+  has_many :follows
+  has_many :follower_users, through: :follows, source: :follower_user
+  has_many :follow_users, through: :follows, source: :follow_user
   acts_as_tagger
 
   extend FriendlyId
@@ -21,5 +23,9 @@ class User < ActiveRecord::Base
       when :github
         u.first_or_create(name: auth.extra.raw_info.name, email: auth.info.email, nickname: auth.info.nickname)
     end
+  end
+
+  def followed?(user)
+    self.follower_users.include?(user)
   end
 end

@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   end
   resources :users, only: %i(show) do
     resources :stocks, only: %i(index)
+    resource :follow, only: %i(create destroy)
   end
 
   authenticated :user do
