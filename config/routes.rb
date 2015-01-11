@@ -16,6 +16,9 @@ Rails.application.routes.draw do
     resource :follow, only: %i(create destroy)
   end
 
+  resources :tags, only: %i(show) do
+  end
+
   authenticated :user do
     root :to => "home#index", as: 'user_authenticated_root'
   end
