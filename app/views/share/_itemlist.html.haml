@@ -10,6 +10,6 @@
         %span
           - item.draft.tags.each do |tag|
             %span.badge
-              = tag.name
+              = link_to tag.name, tag_path(tag)
 
 = paginate items

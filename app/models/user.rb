@@ -1,6 +1,7 @@
 class User < ActiveRecord::Base
   devise :database_authenticatable, :trackable, :omniauthable, :omniauth_providers => [:github]
 
+  acts_as_tagger
   has_many :drafts
   has_many :items
   has_many :stocks
@@ -8,7 +9,8 @@ class User < ActiveRecord::Base
   has_many :follows
   has_many :follower_users, through: :follows, source: :follower_user
   has_many :follow_users, through: :follows, source: :follow_user
-  acts_as_tagger
+  has_many :tag_follows
+  has_many :tags, through: :tag_follows, class_name: 'ActsAsTaggableOn::Tag'
 
   extend FriendlyId
   friendly_id :nickname, use: :slugged

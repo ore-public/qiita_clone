@@ -1,0 +1,5 @@
+- if user_signed_in?
+  - if @tag.followed?(current_user)
+    = link_to 'フォローを解除', tag_tag_follow_path(@tag), method: :delete, remote: true
+  - else
+    = link_to 'フォローする', tag_tag_follow_path(@tag), method: :post, remote: true

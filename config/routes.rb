@@ -17,6 +17,7 @@ Rails.application.routes.draw do
   end
 
   resources :tags, only: %i(show) do
+    resource :tag_follow, only: %i(create destroy)
   end
 
   authenticated :user do
