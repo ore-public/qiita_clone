@@ -1,0 +1,6 @@
+%ul.nav.nav-tabs
+  %li{role: 'presentation', class: current_page?(home_index_path) && 'active'}
+    = link_to 'フィード', home_index_path
+  %li{role: 'presentation', class: current_page?(public_index_path) && 'active'}
+    = link_to 'すべての投稿', public_index_path
+
