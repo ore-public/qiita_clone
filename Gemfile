@@ -51,6 +51,7 @@ gem 'simple_form'
 gem 'default_value_for'
 gem 'kaminari'
 gem 'acts-as-taggable-on'
+gem 'ransack'
 
 group :development, :test do
   gem 'hirb'

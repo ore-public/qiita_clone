@@ -19,11 +19,10 @@
         = link_to 'QiitaClone', root_path, class: 'navbar-brand'
       .collapse.navbar-collapse.bs-navbar-collapse
         %ul.nav.navbar-nav
-        %form.navbar-form.navbar-left{role: "search"}
+        = search_form_for @search, {role: 'search', class: 'navbar-form navbar-left'} do |f|
           .form-group
-            %input.form-control{type: "text", placeholder: "キーワードを入力"}
-          %button.btn.btn-default{type: "submit"}
-            検索
+            = f.text_field :title_cont, {class: 'form-control', placeholder: 'キーワードを入力'}
+          = f.submit '検索', {class: 'btn btn-default'}
         %ul.nav.navbar-nav.navbar-right
           - if user_signed_in?
             %li

@@ -5,7 +5,7 @@ class ItemsController < ApplicationController
   end
 
   def index
-    @items = Item.all.page(params[:page])
+    @items = @search.result.page(params[:page])
   end
 
   private
