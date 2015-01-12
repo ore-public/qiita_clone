@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   }
 
   resources :drafts
-  resources :items, only: %i(show) do
+  resources :items, only: %i(show index) do
     resource :stock, only: %i(create destroy)
   end
   resources :users, only: %i(show) do
@@ -19,8 +19,6 @@ Rails.application.routes.draw do
   resources :tags, only: %i(show) do
     resource :tag_follow, only: %i(create destroy)
   end
-
-  resources :public, only: %i(index)
 
   authenticated :user do
     root :to => "home#index", as: 'user_authenticated_root'

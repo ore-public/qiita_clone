@@ -1,7 +1,7 @@
 %ul.nav.nav-tabs
   - if user_signed_in?
-    %li{role: 'presentation', class: current_page?(home_index_path) && 'active'}
+    %li{role: 'presentation', class: (current_page?(home_index_path) || current_page?(root_path)) && 'active'}
       = link_to 'フィード', home_index_path
-  %li{role: 'presentation', class: current_page?(public_index_path) && 'active'}
-    = link_to 'すべての投稿', public_index_path
+  %li{role: 'presentation', class: current_page?(items_path) && 'active'}
+    = link_to 'すべての投稿', items_path
 
