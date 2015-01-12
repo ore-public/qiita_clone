@@ -27,7 +27,8 @@ class Draft < Article
         raw_body: self.raw_body,
         item_token: self.item_token,
         slug: self.slug,
-        user: self.user
+        user: self.user,
+        tag_list: self.tag_list
     }
   end
 

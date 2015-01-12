@@ -8,7 +8,7 @@
       %div
         = link_to item.title, item
         %span
-          - item.draft.tags.each do |tag|
+          - item.tags.each do |tag|
             %span.badge
               = link_to tag.name, tag_path(tag)
 
