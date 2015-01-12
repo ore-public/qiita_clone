@@ -2,7 +2,7 @@
   = content_tag_for(:li, items) do |item|
     %div.itemlist
       %span
-        = item.user.name
+        = link_to item.user.nickname, item.user
       %span
         = time_ago_in_words(item.updated_at)
       %div
