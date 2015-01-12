@@ -1,6 +1,8 @@
 class HomeController < ApplicationController
+  before_action :authenticate_user!, only: %i(index)
+
   def index
-    @items = Item.page(params[:page])
+    @items = Item.feeds(current_user).page(params[:page])
   end
 
   def auth
