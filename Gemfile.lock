@@ -203,6 +203,7 @@ GEM
       i18n
       polyamorous (~> 1.1)
     rdoc (4.2.0)
+    redcarpet (3.2.2)
     responders (1.1.2)
       railties (>= 3.2, < 4.2)
     rspec (3.1.0)
@@ -308,6 +309,7 @@ DEPENDENCIES
   rails (= 4.1.6)
   rails_12factor
   ransack
+  redcarpet
   rspec-rails
   sass-rails (~> 4.0.3)
   sdoc (~> 0.4.0)

@@ -1,5 +1,5 @@
 %h1= @item.title
-%p= @item.raw_body
+= markdown(@item.raw_body)
 
 - if user_signed_in? && @item.user == current_user
   = link_to '編集', edit_draft_path(@item.draft)

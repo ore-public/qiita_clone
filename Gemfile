@@ -52,6 +52,7 @@ gem 'default_value_for'
 gem 'kaminari'
 gem 'acts-as-taggable-on'
 gem 'ransack'
+gem 'redcarpet'
 
 group :development, :test do
   gem 'hirb'
