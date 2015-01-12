@@ -1,14 +1,12 @@
 class CommentsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_item, only: %i(create destroy)
-  before_action :set_comment, only: %i(destroy)
+  before_action :set_item, only: %i(create destroy edit update)
+  before_action :set_comment, only: %i(destroy edit update)
 
   def index
-
   end
 
   def new
-
   end
 
   def create
@@ -18,11 +16,10 @@ class CommentsController < ApplicationController
   end
 
   def edit
-
   end
 
   def update
-
+    @comment.update(comment_params)
   end
 
   def destroy
