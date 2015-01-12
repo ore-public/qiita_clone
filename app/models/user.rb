@@ -6,8 +6,9 @@ class User < ActiveRecord::Base
   has_many :items
   has_many :stocks
   has_many :stock_items, through: :stocks, class_name: 'Item'
-  has_many :follows
-  has_many :follower_users, through: :follows, source: :follower_user
+  has_many :followers, class_name: 'Follow'
+  has_many :follower_users, through: :followers, source: :follower_user
+  has_many :follows, foreign_key: :follower_id
   has_many :follow_users, through: :follows, source: :follow_user
   has_many :tag_follows
   has_many :tags, through: :tag_follows, class_name: 'ActsAsTaggableOn::Tag'
