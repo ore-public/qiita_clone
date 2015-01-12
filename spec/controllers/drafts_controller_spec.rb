@@ -7,8 +7,8 @@ RSpec.describe DraftsController, :type => :controller do
 
   context '記事の作成、編集、公開' do
     before do
-      @user1 = User.create!(email: 'user1@mail.com')
-      @user2 = User.create!(email: 'user2@mail.com')
+      @user1 = FactoryGirl.create(:user1)
+      @user2 = FactoryGirl.create(:user2)
     end
 
     it '下書きの作成' do

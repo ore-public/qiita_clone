@@ -3,7 +3,7 @@ require 'rails_helper'
 describe Article, type: :model do
 
   before do
-    @user = User.create!(email: 'user@mail.com')
+    @user = FactoryGirl.create(:user1)
   end
 
   it "下書き記事を作成、item_token, slugが生成されること" do

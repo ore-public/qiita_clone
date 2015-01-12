@@ -5,8 +5,8 @@ RSpec.describe ItemsController, :type => :controller do
     render_views
 
     before do
-      @user1 = User.create!(email: 'user1@mail.com')
-      @user2 = User.create!(email: 'user2@mail.com')
+      @user1 = FactoryGirl.create(:user1)
+      @user2 = FactoryGirl.create(:user2)
 
       draft1 = @user1.drafts.build(title: 'ユーザー1の記事')
       draft1.save!
