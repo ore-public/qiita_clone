@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   resources :drafts
   resources :items, only: %i(show index) do
     resource :stock, only: %i(create destroy)
+    resources :comments, except: %i(show)
   end
   resources :users, only: %i(show) do
     resources :stocks, only: %i(index)

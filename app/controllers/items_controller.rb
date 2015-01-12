@@ -2,6 +2,7 @@ class ItemsController < ApplicationController
   before_action :set_item, only: [:show]
 
   def show
+    @comment = Comment.new
   end
 
   def index

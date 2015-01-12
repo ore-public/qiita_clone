@@ -3,6 +3,8 @@ class Article < ActiveRecord::Base
 
   acts_as_taggable
 
+  has_many :comments
+
   extend FriendlyId
   friendly_id :item_token,
               use: [:slugged, :scoped],

@@ -1,0 +1,5 @@
+- @item.comments.each do |comment|
+  .comment
+    %span
+      = link_to '削除', [@item, comment], method: :delete, remote: true
+    = markdown(comment.raw_body)
