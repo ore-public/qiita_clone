@@ -1,6 +1,7 @@
 class CommentsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_item, only: %i(create destroy)
+  before_action :set_comment, only: %i(destroy)
 
   def index
 
@@ -12,6 +13,7 @@ class CommentsController < ApplicationController
 
   def create
     @comment = @item.comments.build(comment_params)
+    @comment.user = current_user
     @comment.save!
   end
 
@@ -24,12 +26,16 @@ class CommentsController < ApplicationController
   end
 
   def destroy
-    @item.comments.find(params[:id]).destroy
+    @comment.destroy
   end
 
   private
   def set_item
     @item = Item.friendly.find(params[:item_id])
+  end
+
+  def set_comment
+    @comment = @item.comments.where(user: current_user).find(params[:id])
   end
 
   def comment_params

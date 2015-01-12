@@ -10,6 +10,7 @@
 .comment-area
   = render 'comments/index'
 
-= simple_form_for([@item, @comment], remote: true) do |f|
-  = f.input :raw_body, label: 'コメント'
-  = f.submit 'コメントする'
+- if user_signed_in?
+  = simple_form_for([@item, @comment], remote: true) do |f|
+    = f.input :raw_body, label: 'コメント'
+    = f.submit 'コメントする'
