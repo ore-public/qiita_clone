@@ -1,9 +1,4 @@
-= link_to 'Edit', edit_draft_path(@draft)
+%h1= @draft.title
+= markdown(@draft.raw_body)
 
-%p
-  %b Title:
-  = @draft.title
-%p
-  %b Body:
-  = @draft.raw_body
-
+= link_to '編集', edit_draft_path(@draft)

@@ -4,7 +4,7 @@ class DraftsController < ApplicationController
   respond_to :html
 
   def index
-    @drafts = current_user.drafts
+    @drafts = current_user.drafts.page(params[:page])
   end
 
   def new
