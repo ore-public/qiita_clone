@@ -53,6 +53,7 @@ gem 'kaminari'
 gem 'acts-as-taggable-on'
 gem 'ransack'
 gem 'redcarpet'
+gem 'rails_bootstrap_navbar'
 
 group :development, :test do
   gem 'hirb'
