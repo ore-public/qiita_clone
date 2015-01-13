@@ -1,6 +1,12 @@
 %h1= @item.title
 = markdown(@item.raw_body)
 
+.stocks
+  = @item.stock_users.count
+.stock_users
+  - @item.stock_users.each do |stock_user|
+    %span= link_to stock_user.nickname, stock_user
+
 - if user_signed_in? && @item.user == current_user
   = link_to '編集', edit_draft_path(@item.draft)
 
