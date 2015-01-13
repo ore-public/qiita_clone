@@ -42,4 +42,7 @@
               = link_to 'Sign in', root_path
 
   .container
+    - unless flash.empty?
+      .alert.alert-success{role: 'alert'}
+        = notice
     = yield
