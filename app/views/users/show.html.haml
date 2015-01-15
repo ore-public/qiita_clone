@@ -17,3 +17,8 @@
 - @user.follower_users.each do |follower_user|
   %span
     =link_to follower_user.nickname, follower_user
+
+%hr
+
+%h1 投稿した記事
+= render 'share/itemlist', items: @items
