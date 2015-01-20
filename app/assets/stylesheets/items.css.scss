@@ -2,6 +2,28 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+.item-title {
+  background-color: #79B74A;
+  color: white;
+  padding-bottom: 10px;
+  .container .row {
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+  .col-sm-10 {
+    padding-left: 0px;
+    padding-right: 0px;
+  }
+}
+
+.item-body {
+  margin-top: 10px;
+}
+
 .panel {
   padding: 15px;
+}
+
+.stocks {
+  margin-top: 20px;
 }

@@ -1,20 +1,35 @@
-%h1= @item.title
-= markdown(@item.raw_body)
+.item-title
+  .container
+    .row
+      .col-sm-10
+        %h1= @item.title
+      .col-sm-2.stocks
+        = @item.stock_users.count
+        ストック
+    .row
+      .col-sm-10
+        - @item.tags.each do |tag|
+          %span.badge
+            = link_to tag.name, tag_path(tag), class: 'tag_link'
+      .col-sm-2
+        .stock-button-area
+          = render 'stock_button'
+    .row
+      .col-sm-10
+        - if user_signed_in? && @item.user == current_user
+          = link_to '編集', edit_draft_path(@item.draft), class: 'btn btn-default'
+      .col-sm-2
+        %span.stock_users
+          - @item.stock_users.each do |stock_user|
+            %span= link_to stock_user.nickname, stock_user
 
-.stocks
-  = @item.stock_users.count
-.stock_users
-  - @item.stock_users.each do |stock_user|
-    %span= link_to stock_user.nickname, stock_user
+.item-body.container
+  .row
+    = markdown(@item.raw_body)
 
-- if user_signed_in? && @item.user == current_user
-  = link_to '編集', edit_draft_path(@item.draft)
-
-.stock-button-area
-  = render 'stock_button'
-
-.comment-area
+.comment-area.container
   = render 'comments/index'
 
-- if user_signed_in?
-  = render 'comments/form'
+.container
+  - if user_signed_in?
+    = render 'comments/form'

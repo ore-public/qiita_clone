@@ -1,24 +1,25 @@
-%h1= @user.nickname
+.container
+  %h1= @user.nickname
 
-.userfollow-button-area
-  = render 'follow_button'
+  .userfollow-button-area
+    = render 'follow_button'
 
-%h2 フォロー中のタグ
-- @user.tags.each do |tag|
-  %span.badge
-    = link_to tag.name, tag_path(tag), class: 'tag_link'
+  %h2 フォロー中のタグ
+  - @user.tags.each do |tag|
+    %span.badge
+      = link_to tag.name, tag_path(tag), class: 'tag_link'
 
-%h2 フォロー中のユーザー
-- @user.follow_users.each do |follow_user|
-  %span
-    =link_to follow_user.nickname, follow_user
+  %h2 フォロー中のユーザー
+  - @user.follow_users.each do |follow_user|
+    %span
+      =link_to follow_user.nickname, follow_user
 
-%h2 フォロワー
-- @user.follower_users.each do |follower_user|
-  %span
-    =link_to follower_user.nickname, follower_user
+  %h2 フォロワー
+  - @user.follower_users.each do |follower_user|
+    %span
+      =link_to follower_user.nickname, follower_user
 
-%hr
+  %hr
 
-%h1 投稿した記事
-= render 'share/itemlist', items: @items
+  %h1 投稿した記事
+  = render 'share/itemlist', items: @items
