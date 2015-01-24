@@ -55,6 +55,7 @@ gem 'acts-as-taggable-on'
 gem 'ransack'
 gem 'redcarpet'
 gem 'rails_bootstrap_navbar'
+gem 'squeel'
 
 group :development, :test do
   gem 'hirb'
