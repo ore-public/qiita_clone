@@ -1,13 +1,15 @@
 %ul.list-unstyled
   = content_tag_for(:li, items) do |item|
-    %div.itemlist
-      %span
-        = link_to item.user.nickname, item.user
-      %span
-        = time_ago_in_words(item.updated_at)
-      %div
-        = link_to item.title, item
-        %span
+    %article.item-list
+      .icon
+        = user_icon_normal(item.user)
+      .body
+        .user
+          = link_to item.user.nickname, item.user
+          = time_ago_in_words(item.updated_at)
+        .title
+          = link_to item.title, item
+        %div
           - item.tags.each do |tag|
             %span.badge
               = link_to tag.name, tag_path(tag), class: 'tag_link'

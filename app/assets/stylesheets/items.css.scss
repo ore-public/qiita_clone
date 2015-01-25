@@ -27,3 +27,27 @@
 .stocks {
   margin-top: 20px;
 }
+
+.item-list {
+  border-bottom: 1px solid darkgrey;
+  padding-bottom: 5px;
+  padding-top: 5px;
+
+  .icon {
+    float: left;
+    padding-right: 10px;
+    display: table-cell;
+  }
+
+  .body {
+    display: table-cell;
+    .title {
+      font-size: large;
+      font-weight: bold;
+    }
+
+    .user {
+      font-size: small;
+    }
+  }
+}
