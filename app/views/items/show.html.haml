@@ -21,7 +21,7 @@
       .col-sm-2
         %span.stock_users
           - @item.stock_users.each do |stock_user|
-            %span= link_to stock_user.nickname, stock_user
+            %span= user_icon_small(stock_user)
 
 .item-body.container
   .row
