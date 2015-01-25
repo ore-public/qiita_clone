@@ -1,8 +1,13 @@
 .container
-  %h1= @user.nickname
-
-  .userfollow-button-area
-    = render 'follow_button'
+  .row
+    .col-sm-8
+      .user-header-icon
+        = user_icon_large(@user)
+      .user-header-name
+        %h1= @user.nickname
+    .col-sm-4
+      .userfollow-button-area
+        = render 'follow_button'
 
   %h2 フォロー中のタグ
   - @user.tags.each do |tag|
@@ -12,12 +17,12 @@
   %h2 フォロー中のユーザー
   - @user.follow_users.each do |follow_user|
     %span
-      =link_to follow_user.nickname, follow_user
+      = user_icon_small(follow_user)
 
   %h2 フォロワー
   - @user.follower_users.each do |follower_user|
     %span
-      =link_to follower_user.nickname, follower_user
+      = user_icon_small(follower_user)
 
   %hr
 

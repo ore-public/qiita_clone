@@ -21,11 +21,16 @@ class User < ActiveRecord::Base
   validates :slug, uniqueness: true, presence: true
 
   def self.find_for_oauth(auth)
-    u = User.where(:provider => auth["provider"], :uid => auth.uid)
+    u = User.find_or_create_by(:provider => auth["provider"], :uid => auth.uid)
     case auth["provider"].to_sym
       when :github
-        u.first_or_create(name: auth.extra.raw_info.name, email: auth.info.email, nickname: auth.info.nickname)
+          u.name = auth.extra.raw_info.name
+          u.email = auth.info.email
+          u.nickname = auth.info.nickname
+          u.image_url = auth.info.image
     end
+    u.save!
+    u
   end
 
   def followed?(user)
