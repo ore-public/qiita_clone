@@ -15,3 +15,7 @@
       = f.button :submit, '投稿', name: 'public_create'
     - else
       = f.button :submit, '更新', name: 'public_update'
+
+= form_for(@image, html: { multipart: true, class: 'dropzone' }) do |f|
+  .dz-message
+    %span「ドラッグ＆ドロップ」またはここをクリック

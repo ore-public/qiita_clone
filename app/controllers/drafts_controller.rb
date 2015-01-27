@@ -1,6 +1,7 @@
 class DraftsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_draft, only: [:show, :edit, :update]
+  before_action :set_image, only: [:edit, :update]
   respond_to :html
 
   def index
@@ -30,6 +31,10 @@ class DraftsController < ApplicationController
   private
   def set_draft
     @draft = current_user.drafts.friendly.find(params[:id])
+  end
+
+  def set_image
+    @image = Image.new
   end
 
   def draft_params

@@ -56,6 +56,9 @@ gem 'ransack'
 gem 'redcarpet'
 gem 'rails_bootstrap_navbar'
 gem 'squeel'
+gem 'paperclip'
+gem 'aws-sdk'
+gem 'dropzonejs-rails'
 
 group :development, :test do
   gem 'hirb'
