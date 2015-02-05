@@ -1,3 +1,4 @@
-= simple_form_for([@item, @comment], remote: true) do |f|
+- comment = Comment.new
+= simple_form_for([@item, comment], remote: true) do |f|
   = f.input :raw_body, label: 'コメント'
   = f.submit 'コメントする'
