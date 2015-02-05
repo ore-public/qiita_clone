@@ -1,7 +1,7 @@
 class DraftsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_draft, only: [:show, :edit, :update]
-  before_action :set_image, only: [:edit, :update]
+  before_action :set_image, only: [:edit, :update, :new]
   respond_to :html
 
   def index
