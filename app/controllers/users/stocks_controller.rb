@@ -1,8 +1,9 @@
 class Users::StocksController < ApplicationController
   before_action :authenticate_user!
+  before_action :set_user, only: :index
 
   def index
-    @stocks = User.friendly.find(params[:user_id]).stock_items.page(params[:page])
+    @stocks = @user.stock_items.page(params[:page])
   end
 
 end

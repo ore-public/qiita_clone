@@ -1,6 +1,6 @@
 class FollowsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_user
+  before_action :set_user, only: %i(create destroy)
 
   def create
     follow = @user.followers.build(follower_id: current_user.id)
@@ -11,10 +11,5 @@ class FollowsController < ApplicationController
     follow = @user.followers.find_by(follower_id: current_user.id)
     follow.destroy
     render :create
-  end
-
-  private
-  def set_user
-    @user = User.friendly.find(params[:user_id])
   end
 end

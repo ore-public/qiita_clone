@@ -13,4 +13,7 @@ class ApplicationController < ActionController::Base
     @item = Item.friendly.find(params[:item_id])
   end
 
+  def set_user
+    @user = User.friendly.find(params[:user_id])
+  end
 end
