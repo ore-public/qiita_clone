@@ -6,6 +6,7 @@ class ItemsController < ApplicationController
   end
 
   def show
+    @comment = @item.comments.build
   end
 
   private
