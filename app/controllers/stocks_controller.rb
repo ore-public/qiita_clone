@@ -8,6 +8,7 @@ class StocksController < ApplicationController
 
   def destroy
     current_user.stocks.find_by_item_id!(@item).destroy
+    render :create
   end
 
   def index
