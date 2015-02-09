@@ -1,4 +1,4 @@
-class StocksController < ApplicationController
+class Items::StocksController < ApplicationController
   before_action :authenticate_user!
   before_action :set_item, only: %i(create destroy)
 
@@ -9,10 +9,6 @@ class StocksController < ApplicationController
   def destroy
     current_user.stocks.find_by_item_id!(@item).destroy
     render :create
-  end
-
-  def index
-    @stocks = User.friendly.find(params[:user_id]).stock_items.page(params[:page])
   end
 
   private

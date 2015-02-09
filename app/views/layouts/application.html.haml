@@ -34,7 +34,7 @@
                   = link_to '投稿する', new_draft_path
                   = link_to '下書き一覧', drafts_path
             %li
-              = link_to 'ストック一覧', user_stocks_path(current_user)
+              = link_to 'ストック一覧', user_users_stocks_path(current_user)
             %li.dropdown
               %a.dropdown-toggle{href: "#", :'data-toggle' => "dropdown", role: "button", :'aria-expanded' => "false"}
                 = current_user.nickname

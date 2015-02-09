@@ -9,11 +9,15 @@ Rails.application.routes.draw do
 
   resources :drafts
   resources :items, only: %i(show index) do
-    resource :stock, only: %i(create destroy)
+    namespace :items do
+      resource :stock, only: %i(create destroy)
+    end
     resources :comments, except: %i(show)
   end
   resources :users, only: %i(show) do
-    resources :stocks, only: %i(index)
+    namespace :users do
+      resources :stocks, only: %i(index)
+    end
     resource :follow, only: %i(create destroy)
   end
 
