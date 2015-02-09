@@ -9,13 +9,13 @@ class CommentsController < ApplicationController
   def new
   end
 
+  def edit
+  end
+
   def create
     @comment = @item.comments.build(comment_params)
     @comment.user = current_user
     @comment.save!
-  end
-
-  def edit
   end
 
   def update
