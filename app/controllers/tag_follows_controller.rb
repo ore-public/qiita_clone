@@ -10,6 +10,7 @@ class TagFollowsController < ApplicationController
   def destroy
     tag_follow = current_user.tag_follows.find_by(tag: @tag)
     tag_follow.destroy
+    render :create
   end
 
   private
