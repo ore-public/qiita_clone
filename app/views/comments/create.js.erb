@@ -1,2 +1,2 @@
-$('.comment-area').html("<%= j(render 'index') %>");
+$('.comment-area').append("<div class='comment' id='comment_<%= @comment.id %>'><%= j(render 'show', comment: @comment) %></div>");
 $('#comment_raw_body').val("");
