@@ -8,4 +8,9 @@ class ApplicationController < ActionController::Base
   def set_search
     @search = Item.search(params[:q])
   end
+
+  def set_item
+    @item = Item.friendly.find(params[:item_id])
+  end
+
 end

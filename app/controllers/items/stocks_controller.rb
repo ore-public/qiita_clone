@@ -10,9 +10,4 @@ class Items::StocksController < ApplicationController
     current_user.stocks.find_by_item_id!(@item).destroy
     render :create
   end
-
-  private
-  def set_item
-    @item = Item.friendly.find(params[:item_id])
-  end
 end

@@ -27,10 +27,6 @@ class CommentsController < ApplicationController
   end
 
   private
-  def set_item
-    @item = Item.friendly.find(params[:item_id])
-  end
-
   def set_comment
     @comment = @item.comments.where(user: current_user).find(params[:id])
   end
