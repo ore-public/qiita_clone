@@ -7,19 +7,19 @@ class DraftsController < ApplicationController
     @drafts = current_user.drafts.page(params[:page])
   end
 
+  def show
+  end
+
   def new
     @draft = current_user.drafts.build
+  end
+
+  def edit
   end
 
   def create
     @draft = current_user.drafts.build(draft_params)
     save_draft_and_item('new')
-  end
-
-  def show
-  end
-
-  def edit
   end
 
   def update
