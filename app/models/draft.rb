@@ -3,20 +3,11 @@ class Draft < Article
           :foreign_key => :slug,
           :primary_key => :slug
 
-  def new_public_item
-    unless self.item
-      self.create_item!(get_contents)
-    else
-      raise 'Already created public item.'
-    end
-  end
-
-  def update_public_item
+  def public_item!
     if self.item
-      self.item.update_attributes(get_contents)
-      self.item
+      update_public_item
     else
-      raise 'Public item not created.'
+      new_public_item
     end
   end
 
@@ -30,6 +21,23 @@ class Draft < Article
         user: self.user,
         tag_list: self.tag_list
     }
+  end
+
+  def new_public_item
+    unless self.item
+      self.create_item!(get_contents)
+    else
+      raise 'Already created public item.'
+    end
+  end
+
+  def update_public_item
+    if self.item
+      self.item.update_attributes!(get_contents)
+      self.item
+    else
+      raise 'Public item not created.'
+    end
   end
 
 end
