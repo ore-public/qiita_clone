@@ -6,7 +6,7 @@ RSpec.describe Stock, :type => :model do
       @create_user = FactoryGirl.create(:user1)
       draft = @create_user.drafts.build(title: '記事')
       draft.save!
-      @item = draft.new_public_item
+      @item = draft.public_item!
 
       @stock_user1 = FactoryGirl.create(:user2)
       @stock_user2 = FactoryGirl.create(:user3)
@@ -25,11 +25,11 @@ RSpec.describe Stock, :type => :model do
       @create_user = FactoryGirl.create(:user1)
       draft1 = @create_user.drafts.build(title: '記事')
       draft1.save!
-      @item1 = draft1.new_public_item
+      @item1 = draft1.public_item!
 
       draft2 = @create_user.drafts.build(title: '記事2')
       draft2.save!
-      @item2 = draft2.new_public_item
+      @item2 = draft2.public_item!
 
       @stock_user1 = FactoryGirl.create(:user2)
 
