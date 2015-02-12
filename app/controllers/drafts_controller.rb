@@ -38,10 +38,7 @@ class DraftsController < ApplicationController
 
   def save_draft_and_item(action)
     if @draft.save
-      if params[:public_create]
-        @item = @draft.public_item!
-        save_item(action)
-      elsif params[:public_update]
+      if params[:public]
         @item = @draft.public_item!
         save_item(action)
       else
