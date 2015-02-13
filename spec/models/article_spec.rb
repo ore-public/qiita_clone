@@ -24,8 +24,9 @@ describe Article, type: :model do
   context '下書きから公開記事を作る（記事が未公開の場合)' do
     it '下書きから公開記事作成。下書きの内容と同じであること' do
       draft = @user.drafts.build(title: '下書き', raw_body: '# タイトル')
+      draft.public = true
       draft.save!
-      item = draft.public_item!
+      item = draft.save_item
       expect(item).to be_persisted
       expect(item.title).to eq(draft.title)
       expect(item.raw_body).to eq(draft.raw_body)
@@ -35,11 +36,13 @@ describe Article, type: :model do
 
     it 'item_tokenが重複した下書きがある場合、公開記事のslugが下書きと同期とれていること' do
       draft = @user.drafts.build(title: '下書き', item_token: 'hoge')
+      draft.public = true
       draft.save!
-      item = draft.public_item!
+      item = draft.save_item
       draft2 = @user.drafts.build(title: '下書き2', item_token: 'hoge')
+      draft2.public = true
       draft2.save!
-      item2 = draft2.public_item!
+      item2 = draft2.save_item
       expect(item.slug).to eq(draft.slug)
       expect(item2.slug).to eq(draft2.slug)
     end
@@ -49,13 +52,14 @@ describe Article, type: :model do
   context '下書きの編集結果を公開記事に反映する(記事が公開済みの場合)' do
     it '記事を公開後、下書きの編集をして公開記事を更新出来ること' do
       draft = @user.drafts.build(title: 'タイトル')
+      draft.public = true
       draft.save!
-      draft.public_item!
 
       draft.title = 'タイトル upd'
       draft.raw_body = '本文 upd'
+      draft.public = true
       draft.save!
-      item = draft.public_item!
+      item = draft.save_item
 
       expect(item.title).to eq('タイトル upd')
       expect(item.raw_body).to eq('本文 upd')

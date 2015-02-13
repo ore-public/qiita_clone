@@ -9,12 +9,14 @@ RSpec.describe ItemsController, :type => :controller do
       @user2 = FactoryGirl.create(:user2)
 
       draft1 = @user1.drafts.build(title: 'ユーザー1の記事')
+      draft1.public = true
       draft1.save!
-      @item1 = draft1.public_item!
+      @item1 = draft1.save_item
 
       draft2 = @user2.drafts.build(title: 'ユーザー2の記事')
+      draft2.public = true
       draft2.save!
-      @item2 = draft2.public_item!
+      @item2 = draft2.save_item
     end
 
     it '自分の記事にアクセスした場合、編集リンクが表示されること' do

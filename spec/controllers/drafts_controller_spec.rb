@@ -47,8 +47,9 @@ RSpec.describe DraftsController, :type => :controller do
         sign_in @user1
 
         draft = @user1.drafts.build(drafts_attributes)
+        draft.public = true
         draft.save!
-        item = draft.public_item!
+        item = draft.save_item
         @slug = item.slug
 
         put :update, {id: draft.id, draft: {title: '公開記事を下書き保存'}}
@@ -67,8 +68,9 @@ RSpec.describe DraftsController, :type => :controller do
         sign_in @user1
 
         draft = @user1.drafts.build(drafts_attributes)
+        draft.public = true
         draft.save!
-        item = draft.public_item!
+        item = draft.save_item
         @slug = item.slug
 
         put :update, {id: draft.id, draft: {title: '公開記事を下書き保存'}, public: '更新'}

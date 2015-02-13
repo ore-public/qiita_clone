@@ -3,11 +3,14 @@ class Draft < Article
           :foreign_key => :slug,
           :primary_key => :slug
 
-  def public_item!
-    if self.item
-      update_public_item
+  attr_accessor :public
+  after_save :save_public_item
+
+  def save_item
+    if self.public
+      self.item
     else
-      new_public_item
+      self
     end
   end
 
@@ -40,4 +43,17 @@ class Draft < Article
     end
   end
 
+  def public_item!
+    if self.item
+      update_public_item
+    else
+      new_public_item
+    end
+  end
+
+  def save_public_item
+    if self.public
+      public_item!
+    end
+  end
 end
