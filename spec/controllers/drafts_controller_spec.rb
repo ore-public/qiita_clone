@@ -23,7 +23,7 @@ RSpec.describe DraftsController, :type => :controller do
       before do
         sign_in @user1
         @result = expect do
-          post :create, {draft: {title: '公開新規'}, public_create: '投稿'}
+          post :create, {draft: {title: '公開新規'}, public: '投稿'}
         end
       end
 
@@ -38,7 +38,7 @@ RSpec.describe DraftsController, :type => :controller do
       draft.save!
 
       expect {
-        put :update, {id: draft.id, draft: {title: '編集して公開'}, public_create: '投稿'}
+        put :update, {id: draft.id, draft: {title: '編集して公開'}, public: '投稿'}
       }.to change(Item, :count).by(1)
     end
 
@@ -71,7 +71,7 @@ RSpec.describe DraftsController, :type => :controller do
         item = draft.public_item!
         @slug = item.slug
 
-        put :update, {id: draft.id, draft: {title: '公開記事を下書き保存'}, public_update: '更新'}
+        put :update, {id: draft.id, draft: {title: '公開記事を下書き保存'}, public: '更新'}
       end
 
       it '下書きと公開記事が更新されていること' do
