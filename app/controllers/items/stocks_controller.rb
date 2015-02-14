@@ -3,11 +3,11 @@ class Items::StocksController < ApplicationController
   before_action :set_item, only: %i(create destroy)
 
   def create
-    current_user.stock_items << @item
+    @item.stocks.create(stock_user: current_user)
   end
 
   def destroy
-    current_user.stocks.find_by_item_id!(@item).destroy
-    render :create
+    @item.stocks.find_by(stock_user: current_user).destroy
+     render :create
   end
 end
