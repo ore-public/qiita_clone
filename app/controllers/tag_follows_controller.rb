@@ -3,13 +3,11 @@ class TagFollowsController < ApplicationController
   before_action :set_tag, only: %i(create destroy)
 
   def create
-    tag_follow = current_user.tag_follows.build(tag: @tag)
-    tag_follow.save!
+    current_user.tag_follows.create(tag: @tag)
   end
 
   def destroy
-    tag_follow = current_user.tag_follows.find_by(tag: @tag)
-    tag_follow.destroy
+    current_user.tag_follows.find_by(tag: @tag).destroy
     render :create
   end
 
