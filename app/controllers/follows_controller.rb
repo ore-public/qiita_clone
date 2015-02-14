@@ -3,13 +3,11 @@ class FollowsController < ApplicationController
   before_action :set_user, only: %i(create destroy)
 
   def create
-    follow = @user.followers.build(follower_id: current_user.id)
-    follow.save!
+    @user.followers.create(follower_id: current_user.id)
   end
 
   def destroy
-    follow = @user.followers.find_by(follower_id: current_user.id)
-    follow.destroy
+    @user.followers.find_by(follower_id: current_user.id).destroy
     render :create
   end
 end
